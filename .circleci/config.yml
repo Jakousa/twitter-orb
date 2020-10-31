@@ -23,8 +23,8 @@ parameters:
 jobs:
   # Define one or more jobs which will utilize your orb's commands and parameters to validate your changes.
   integration-test-1:
-    docker:
-      - image: cimg/base:stable
+    executor:
+      name: twitter-orb/twurl
     steps:
       - checkout
       - twitter/tweet:
@@ -47,11 +47,17 @@ workflows:
           requires:
             - orb-tools/lint
             - orb-tools/pack
+
+      # Run as job
+      - twitter-orb/tweet:
+          contents: "Publishing new dev versio of twitter-orb"
+
       # Publish development version(s) of the orb.
       - orb-tools/publish-dev:
           orb-name: jakousa/twitter-orb
           context: orb-publishing # A restricted context containing your private publishing credentials. Will only execute if approved by an authorized user.
           requires: [hold-for-dev-publish]
+
       # Trigger an integration workflow to test the
       # dev:${CIRCLE_SHA1:0:7} version of your orb
       - orb-tools/trigger-integration-tests-workflow:
