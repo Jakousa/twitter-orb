@@ -1,0 +1,15 @@
+description: >
+  Sends a tweet
+# What will this job do?
+# Descriptions should be short, simple, and clear.
+
+executor: twurl
+
+parameters:
+  contents:
+    type: string
+    default: "Hello World!"
+    description: "This is the tweet that will be sent."
+steps:
+  - tweet:
+      contents: << parameters.contents >>

@@ -1,0 +1,4 @@
+description: >
+  Executor with twurl.
+docker:
+  - image: 'jakousa/twurl:latest'
