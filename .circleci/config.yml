@@ -28,7 +28,7 @@ jobs:
     steps:
       - checkout
       - twitter-orb/tweet:
-          contents: Twitter orb new version
+          contents: Twitter orb passed integration test
 
 
 workflows:
@@ -50,7 +50,8 @@ workflows:
 
       # Run as job
       - twitter-orb/tweet:
-          contents: "Publishing new dev versio of twitter-orb"
+          contents: "New dev versio of twitter-orb was approved"
+          requires: [hold-for-dev-publish]
 
       # Publish development version(s) of the orb.
       - orb-tools/publish-dev:
