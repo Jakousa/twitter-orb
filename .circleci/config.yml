@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   # Replace this with your own!
-  twitter: jakousa/twitter-orb@<<pipeline.parameters.dev-orb-version>>
+  twitter-orb: jakousa/twitter-orb@<<pipeline.parameters.dev-orb-version>>
   orb-tools: circleci/orb-tools@10.0
 
 # Pipeline Parameters
@@ -27,7 +27,7 @@ jobs:
       name: twitter-orb/twurl
     steps:
       - checkout
-      - twitter/tweet:
+      - twitter-orb/tweet:
           contents: Twitter orb new version
 
 

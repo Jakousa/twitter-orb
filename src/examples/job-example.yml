@@ -1,13 +1,14 @@
 description: >
-  Sample example description.
+  Tweet hello world!
 # Provide a use-case based example for using this orb.
 # Everything in the `usage` section will be displayed in the orb registry.
 # Comments are not retained.
 usage:
   version: 2.1
   orbs:
-    <orb-name>: <namespace>/<orb-name>@1.2.3
+    twitter-orb: jakousa/twitter-orb@1
   workflows:
-    use-my-orb:
+    tweet:
       jobs:
-        - <orb-name>/<job-name>
+        - twitter-orb/tweet:
+            contents: "Hello world!"
